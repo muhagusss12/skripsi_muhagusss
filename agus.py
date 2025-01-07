@@ -31,16 +31,22 @@ def main():
     
     # Mengambil argumen dari command line
     args = parser.parse_args()
+
+    a = start_firewall()
+    b = config_firewall()
+    c = stop_firewall()
     
     if args.start:
         print("Firewall telah aktif.")
-        start_firewall()
+        print(a)
     elif args.config:
         print("Aturan iptables:")
         config_firewall()
+        print(b)
     elif args.stop:
         print('Firewall telah nonaktif')
         stop_firewall()
+        print(c)
     else:
         print('Parameter tidak tersedia. Gunakan -h atau --help untuk bantuan.')
 
