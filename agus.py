@@ -38,17 +38,15 @@ def main():
     
     if args.start:
         print("Firewall telah aktif.")
-        print(a)
+        return a
     elif args.config:
         print("Aturan iptables:")
-        config_firewall()
-        print(b)
+        return b
     elif args.stop:
         print('Firewall telah nonaktif')
-        stop_firewall()
-        print(c)
+        return c
     else:
-        print('Parameter tidak tersedia. Gunakan -h atau --help untuk bantuan.')
+        return f'Parameter tidak tersedia. Gunakan -h atau --help untuk bantuan.'
 
 if __name__ == '__main__':
     main()
