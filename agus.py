@@ -3,22 +3,22 @@ import argparse
 
 def start_firewall():
     try:
-        output = os.popen('sudo iptables -L').read()
-        return output
+        output = os.popen('iptables -L').read()
+        print(output)
     except Exception as e:
         return f"Terjadi kesalahan: {e}"
 
 def config_firewall():
     try:
         output = os.popen('sudo nano /etc/knockd.conf').read()
-        return output
+        print(output)
     except Exception as e:
         return f"Terjadi kesalahan: {e}"
 
 def stop_firewall():
     try:
         output = os.popen('sudo iptables -F').read()
-        return output
+        print(output)
     except Exception as e:
         return f"Terjadi kesalahan: {e}"
 
@@ -32,19 +32,17 @@ def main():
     # Mengambil argumen dari command line
     args = parser.parse_args()
 
-    a = start_firewall()
-    b = config_firewall()
-    c = stop_firewall()
+    print(start_firewall())
     
     if args.start:
         print("Firewall telah aktif.")
-        return a
+        print(start_firewall())
     elif args.config:
         print("Aturan iptables:")
-        return b
+        print(config_firewall())
     elif args.stop:
         print('Firewall telah nonaktif')
-        return c
+        print(stop_firewall())
     else:
         return f'Parameter tidak tersedia. Gunakan -h atau --help untuk bantuan.'
 
